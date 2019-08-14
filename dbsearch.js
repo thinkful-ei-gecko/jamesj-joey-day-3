@@ -9,19 +9,23 @@ const HEROES = [
   { id: 7, name: 'Hulk', squad: 'Avengers' },
 ];
 function findOne(arr,query){
-  let result = {};
+  let result = null;
   for(let i = 0; i < arr.length; i++){
-    for( let j = 0; j < query.length; j++) { 
-      console.log(query);
-      if(!(query[j] in arr[i])){
-        result = 'null';
-
+    let counter = 1;
+    for (let arg in query) {
+      if(arg in arr[i] && query[arg] === arr[i][arg] && counter === Object.keys(query).length){
+        result = arr[i];
+      } else if (arg in arr[i] && query[arg] === arr[i][arg] && counter !== Object.keys(query).length) {
+        counter++;
+      } else {
+        result = null;
       }
-      else{ return result = arr[i]; }
-    }
+    } 
+    if (result !== null) {
+      return result;
+    }      
   }
-
+  return result;
 }
-console.log(findOne(HEROES, { id: 1}));
 
-//work in progress
+console.log(findOne(HEROES, { squad: 'Justice League', id: 5 }));

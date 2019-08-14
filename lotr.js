@@ -31,3 +31,5 @@ characters.push(createCharacter('Arwen Undomiel', 'arwen', 'Half-Elf', 'Rivendel
 characters.find(char => char.nickname === 'aragorn');
 characters.filter(char => char.race === 'Hobbit');
 characters.filter(char => char.attack > 5);
+
+// To add weapon as a property and use, simply add into factory function and add as parameter
